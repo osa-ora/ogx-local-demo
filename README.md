@@ -1,68 +1,119 @@
-# ogx-local-demo
-Demo OGX on your local machine with Ollama.
+# OGX Demo on Your Local Environment
+---
+
+Llama Stack has evolved into **OGX**: https://github.com/ogx-ai/ogx
+
+As described in the official documentation, OGX is much more than simple inference routing. It composes inference, storage, moderation, and orchestration into a single process—whether you run it as a server or import it as a library. Your agent can search a vector store, call a tool, apply moderation checks, and stream the response without requiring glue code or sidecar services (see: https://ogx-ai.github.io/).
+
+In this tutorial, we will demonstrate how to spin up OGX on your local machine using Ollama to execute two foundational scenarios: simple model selection and a basic RAG pipeline.
 
 ---
 
-## Installing Ollama
+## 1) Installing Ollama
 
-Make sure you install Ollama on your machine
-Download the models you need.
-```
+1. Install Ollama on your machine.
+2. Download the local LLM models you want to interact with.
+
+```bash
 brew install ollama
-ollama pull {models you need}
-//for example ollama pull llama3.2:3b and ollama pull deepseek-r1:8b
+
+# Pull the models you want to use for the demo
+ollama pull llama3.2:3b
+ollama pull deepseek-r1:8b
+
+# Verify your local inventory and start the engine
 ollama list
 ollama serve
-```
----
-## Installing OGX 
 
 ```
+
+You can validate that the Ollama service endpoint is alive using:
+
+```bash
+curl http://localhost:11434/api/tags | jq .
+
+```
+
+---
+
+## 2) Installing OGX
+
+Set up your Python runtime and package management tooling:
+
+```bash
+brew install python@3.13
+brew install uv
+
+```
+
+Install the OGX starter stack profile. We will bind it to your local Ollama instance:
+
+```bash
 uv tool install --force 'ogx[starter]' --python 3.13 --with "huggingface_hub<0.26.0" --with "sentence-transformers>=2.6.0"
+
 export OLLAMA_URL=http://localhost:11434/v1
 ogx stack run starter
-```
-
-Note: before you start it, take a backup of the file: dynamic_module_utils.py
 
 ```
+
+> ⚠️ **Sanity Check:** Ensure the OGX gateway started successfully by querying its model routing index on port `8321`:
+> ```bash
+> curl http://localhost:8321/v1/models | jq .
+> 
+> ```
+> 
+> 
+
+### 🛠️ Important Hugging Face Patch
+
+To ensure local text embeddings route properly without remote execution safety flags blocking your scripts, apply this quick override to the `transformers` library utility file.
+
+Take a backup of the target file first:
+
+```bash
 cp /Users/{your-user}/.local/share/uv/tools/ogx/lib/python3.13/site-packages/transformers/dynamic_module_utils.py /Users/{your-user}/.local/share/uv/tools/ogx/lib/python3.13/site-packages/transformers/dynamic_module_utils_old.py
+
 ```
 
-And replace the following function body: 
-```
-def resolve_trust_remote_code(trust_remote_code, model_name, has_local_code, has_remote_code):
-... function content ...
-...
-```
-With this code:
-```
+Open `dynamic_module_utils.py` and replace the default body of `resolve_trust_remote_code` with a forced approval wrapper:
+
+```python
 def resolve_trust_remote_code(trust_remote_code, model_name, has_local_code, has_remote_code):
     print("DEBUG: resolve_trust_remote_code called for", model_name)
     print("DEBUG: trust_remote_code", trust_remote_code)
     return True
+
 ```
 
 ---
-## Install JupyterLab
 
-```
+## 3) Install JupyterLab
+
+Launch your local development workspace:
+
+```bash
 brew install jupyterlab
 jupyter lab 
+
 ```
 
-Then Open the notebooks in this reposiotry and start to execute the simple-ogx-ollama but make sure the models referenced in that file already installed in ollama.
-This will show you how to run different models available in ollama as abstracted by OGX.
+---
+
+## 4) Run the Demo Notebooks
+
+### Scenario A: Simple Model Selection
+
+Open the `simple-ogx-ollama` notebook. Ensure that the model strings referenced inside match the models you pulled during Step 1. This sequence demonstrates how seamlessly OGX abstracts model inference calls using standard API constructs.
 
 <img width="1173" height="690" alt="Screenshot 2026-06-02 at 9 47 56 PM" src="https://github.com/user-attachments/assets/cfed99e5-b6c6-4e6d-b984-c0f38d7827b3" />
 
+### Scenario B: Abstracted RAG Pipeline
 
-Then to test the RAG demo, first generate the files (if not already generated) and feel free to modify or to add any additional files.
-This is using the notebook: sample-files-creation.
+*Note: This default starter setup utilizes the inline flat-file FAISS/Memory provider for lightweight, zero-configuration local file searching.*
 
-Once create go to the rag notebook named: simple-ogx-ollama and enjoy executing abstracted simple RAG architecture using OGX.
+1. Run the `sample-files-creation` notebook first to generate your local reference `.txt` files. Feel free to edit or add your own content here!
+2. Open the main RAG notebook, execute the cells, and watch OGX automatically ingest, chunk, attach, and contextually search across your documents natively.
 
 <img width="1445" height="699" alt="Screenshot 2026-06-02 at 9 46 40 PM" src="https://github.com/user-attachments/assets/d221dab3-6ece-4a55-b5cf-4222e9e9cc95" />
 
----
-
+This concludes our tutorial for local OGX installation.
