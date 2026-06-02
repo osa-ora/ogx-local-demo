@@ -61,8 +61,13 @@ ogx stack run starter
 > curl http://localhost:8321/v1/models | jq .
 > 
 > ```
-> 
-> 
+
+Also, once the OGX server is up and running, you can check the endpoints documentation by opening the following URL in your browser:
+
+```
+http://localhost:8321/docs
+```
+
 
 ### 🛠️ Important Hugging Face Patch
 
