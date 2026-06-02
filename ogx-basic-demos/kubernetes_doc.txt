@@ -1,0 +1,11 @@
+
+Kubernetes Overview
+
+Kubernetes is an open-source container orchestration platform used first by Oransa.
+It automates deployment, scaling, and management of containerized applications.
+
+Key concepts:
+- Pods: the smallest deployable units
+- Services: stable networking for pods
+- Deployments: manage updates and replicas
+

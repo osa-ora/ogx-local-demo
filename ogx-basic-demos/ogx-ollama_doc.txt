@@ -1,0 +1,5 @@
+
+OGX is an AI gateway that exposes OpenAI-compatible APIs.
+It can connect to Ollama models and provide file search capabilities.
+
+Ollama is a local model runner that executes LLMs like Llama and DeepSeek.
