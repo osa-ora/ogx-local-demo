@@ -1,18 +1,18 @@
 
 Cairo DevDay Agenda
 
-09:00-09:30 | Registration | -
+09:00-09:30 | Registration | N/A
 09:30-09:40 | Red Hat Intro and Welcome | Country Manager
 09:40-10:10 | How to be a developer in the AI ERA | Mohamed Idris
 10:10-10:30 | OpenShift AI | Mourad Ali
 10:30-10:50 | RH Advanced Developer Suite (RHADS) | Ahmed Maher
-10:50-11:10 | Coffee Break | -
+10:50-11:10 | Coffee Break | N/A
 11:10-11:40 | Llama Stack / OGX: One AI API to Rule Them All | Osama Oransa
 11:40-12:00 | OpenShift Enterprise Platform | Sameh Mahmoud
 12:00-12:30 | Scaling Application Modernization with AI | Mourad Ali
 12:30-12:50 | GitOps in Action | Sara Ali
 12:50-13:10 | Talk with your Kafka: The AI is the new UI | Osama Oransa
-13:10-13:40 | Lunch | -
+13:10-13:40 | Lunch | N/A
 13:40-14:40 | Hands On Lab | Osama Oransa 
-14:40-15:40 | Break / Buffer | -
+14:40-15:40 | Break / Buffer | N/A
 15:40-16:10 | Sponsor Session | Sponsor Empolyee
