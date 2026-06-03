@@ -117,7 +117,7 @@ Open the `simple-ogx-ollama` notebook. Ensure that the model strings referenced 
 *Note: This default starter setup utilizes the inline flat-file FAISS/Memory provider for lightweight, zero-configuration local file searching.*
 
 1. Run the `sample-files-creation` notebook first to generate your local reference `.txt` files. Feel free to edit or add your own content here!
-2. Open the main RAG notebook, execute the cells, and watch OGX automatically ingest, chunk, attach, and contextually search across your documents natively.
+2. Open the main RAG notebook `simple-rag-ogx.ipynb`, execute the cells, and watch OGX automatically ingest, chunk, attach, and contextually search across your documents natively.
 
 <img width="1445" height="699" alt="Screenshot 2026-06-02 at 9 46 40 PM" src="https://github.com/user-attachments/assets/d221dab3-6ece-4a55-b5cf-4222e9e9cc95" />
 
