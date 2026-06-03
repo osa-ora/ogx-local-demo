@@ -1,0 +1,57 @@
+
+Internal Training Course for ACME Corp.
+
+Course: AI-101
+Title: Introduction to Enterprise AI
+Duration: 2 Days
+Instructor: Ahmed Hassan
+Prerequisites: Basic IT Knowledge
+Certification: Yes
+Module 1: Fundamentals of Generative AI
+Module 2: Large Language Models
+Module 3: Prompt Engineering
+Module 4: Enterprise AI Use Cases
+Module 5: Responsible AI
+
+Course: AI-201
+Title: Building RAG Applications
+Duration: 3 Days
+Instructor: Sarah Ali
+Prerequisites: Python Fundamentals
+Certification: No
+Module 1: Vector Databases
+Module 2: Embeddings
+Module 3: Chunking Strategies
+Module 4: Retrieval Techniques
+Module 5: Hybrid Search
+Module 6: Reranking
+Module 7: Evaluation and Testing
+
+Course: AI-301
+Title: Agentic AI and MCP Integration
+Duration: 3 Days
+Instructor: Osama Oransa
+Prerequisites: AI-201
+Certification: Yes
+Module 1: AI Agents Fundamentals
+Module 2: Tool Calling
+Module 3: MCP Architecture
+Module 4: Building MCP Servers
+Module 5: Multi-Agent Systems
+Module 6: Agent Memory
+Module 7: Agent Evaluation
+
+Course: AI-401
+Title: Enterprise AI on OpenShift
+Duration: 4 Days
+Instructor: Mohamed Sameh
+Prerequisites: Kubernetes Knowledge
+Certification: Yes
+Module 1: OpenShift AI Fundamentals
+Module 2: Model Serving
+Module 3: Distributed Inference
+Module 4: GPU Management
+Module 5: Llama Stack / OGX
+Module 6: AI Governance
+Module 7: Production Monitoring
+Module 8: Scaling Enterprise AI
