@@ -43,7 +43,11 @@ Set up your Python runtime and package management tooling:
 ```bash
 brew install python@3.13
 brew install uv
+```
 
+Install openai and all necessary libraries, for example:
+```
+python3 -m pip install openai --break-system-packages
 ```
 
 Install the OGX starter stack profile. We will bind it to your local Ollama instance:
@@ -108,7 +112,7 @@ jupyter lab
 
 ### Scenario A: Simple Model Selection
 
-Open the `simple-ogx-ollama` notebook. Ensure that the model strings referenced inside match the models you pulled during Step 1. This sequence demonstrates how seamlessly OGX abstracts model inference calls using standard API constructs.
+Open the `simple-ogx-ollama.ipynb` notebook. Ensure that the model strings referenced inside match the models you pulled during Step 1. This sequence demonstrates how seamlessly OGX abstracts model inference calls using standard API constructs.
 
 <img width="1173" height="690" alt="Screenshot 2026-06-02 at 9 47 56 PM" src="https://github.com/user-attachments/assets/cfed99e5-b6c6-4e6d-b984-c0f38d7827b3" />
 
@@ -116,9 +120,10 @@ Open the `simple-ogx-ollama` notebook. Ensure that the model strings referenced 
 
 *Note: This default starter setup utilizes the inline flat-file FAISS/Memory provider for lightweight, zero-configuration local file searching.*
 
-1. Run the `sample-files-creation` notebook first to generate your local reference `.txt` files. Feel free to edit or add your own content here!
-2. Open the main RAG notebook `simple-rag-ogx.ipynb`, execute the cells, and watch OGX automatically ingest, chunk, attach, and contextually search across your documents natively.
+1. Run the `sample-files-creation.ipynb` notebook first to generate your local reference `.txt` files. Feel free to edit or add your own content here!
+2. Open the main RAG notebook `simple-rag-ogx-openai.ipynb` for OpenAI SDK or `simple-rag-ogx.ipynb` for REST APIs, execute the cells, and watch OGX automatically ingest, chunk, attach, and contextually search across your documents natively.
 
-<img width="1445" height="699" alt="Screenshot 2026-06-02 at 9 46 40 PM" src="https://github.com/user-attachments/assets/d221dab3-6ece-4a55-b5cf-4222e9e9cc95" />
+<img width="1483" height="728" alt="Screenshot 2026-06-03 at 10 04 44 AM" src="https://github.com/user-attachments/assets/cc4e9930-9dd5-4e6a-b6a9-559bb792f98a" />
+
 
 This concludes our tutorial for local OGX installation.
