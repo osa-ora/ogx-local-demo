@@ -47,8 +47,10 @@ brew install uv
 
 Install openai and all necessary libraries, for example:
 ```
-python3 -m pip install openai --break-system-packages
+python3 -m pip install openai 
 ```
+Note: For me because Python is managed, i had to add the flag: --break-system-packages , but you don't need to do that.
+
 
 Install the OGX starter stack profile. We will bind it to your local Ollama instance:
 
@@ -75,7 +77,7 @@ http://localhost:8321/docs
 
 ### 🛠️ Important Hugging Face Patch
 
-To ensure local text embeddings route properly without remote execution safety flags blocking your scripts, apply this quick override to the `transformers` library utility file.
+Because i hit a compatability issue, I had to do a workaround to ensure local text embeddings route properly without remote execution safety flags blocking the file processing, so I applied this dirty temporary override to the `transformers` library utility file.
 
 Take a backup of the target file first:
 
@@ -125,5 +127,12 @@ Open the `simple-ogx-ollama.ipynb` notebook. Ensure that the model strings refer
 
 <img width="1483" height="728" alt="Screenshot 2026-06-03 at 10 04 44 AM" src="https://github.com/user-attachments/assets/cc4e9930-9dd5-4e6a-b6a9-559bb792f98a" />
 
+3. You may also execute it from the command line using:
+```
+python3 rag-ogx-openai.py
+```
+And ask your questions directly:
+
+<img width="1139" height="769" alt="Screenshot 2026-06-06 at 1 32 28 PM" src="https://github.com/user-attachments/assets/8f4bf594-fcbd-40ab-b68f-23489a9862ad" />
 
 This concludes our tutorial for local OGX installation.
