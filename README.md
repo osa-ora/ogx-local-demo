@@ -58,7 +58,9 @@ Install the OGX starter stack profile. We will bind it to your local Ollama inst
 uv tool install --force 'ogx[starter]' --python 3.13 --with "huggingface_hub<0.26.0" --with "sentence-transformers>=2.6.0"
 
 export OLLAMA_URL=http://localhost:11434/v1
-ogx stack run starter
+uv ogx stack run starter
+# or better
+uv run ogx run starter
 
 ```
 
@@ -94,6 +96,14 @@ def resolve_trust_remote_code(trust_remote_code, model_name, has_local_code, has
     print("DEBUG: trust_remote_code", trust_remote_code)
     return True
 
+```
+To clean all vector stores locally, you can call the exposed methods or just run:
+```
+rm -rf ~/.ogx/distributions/starter/*
+```
+The config file that contains all information in my case was located at: 
+```
+/Users/{user}/.local/share/uv/tools/ogx/lib/python3.13/site-packages/ogx/distributions/starter/config.yaml
 ```
 
 ---
